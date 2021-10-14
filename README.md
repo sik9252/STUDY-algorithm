@@ -75,3 +75,75 @@ JavaScript에서 안전한 최대 정수값을 나타낸다. (253 - 1)
 Number.MAX_SAFE_INTEGER를 사용하는 이유는 정수를 정확하고 올바르게 비교할 수 있는 안전함을 가지고 있기 때문이라고 한다.
 
 ---
+
+## 홀수
+
+푼 날짜: 2021.10.14
+
+걸린 시간: 8m
+
+일단 내가 짠 코드는 아직 자바스크립트 문법을 잘 모르는 상태에서 짜서 그런가 선언한 변수도 많고 반복문도 정석으로 돌렸다. 하지만 답안의 반복문을 보면
+
+```javascript
+for (let x of arr) {
+  if (x % 2 === 1) {
+    sum += x;
+    if (x < min) min = x;
+  }
+}
+```
+
+let i = 0; i < arr.length; i++ 가 아닌 let x of arr라고 되어있다. (이걸 보고 약간 파이썬의 for i in range() 문법이 생각났다.) 여튼 이번 문제를 통해 알게 된 **첫번째로 알게 된 부분**이다.
+
+그리고 **두번째로 알게 된 부분**은 한 함수 안에서 어떻게 여러 값을 return 하는가? 였는데 일단 자바스크립트에서는 answer라는 배열을 만들어 그 안에
+
+```javascript
+answer.push(sum);
+answer.push(min);
+return answer;
+```
+
+와 같은 형태로 return할 값을 push 해준후 return answer를 실행하면 된다.
+
+즉, return명령은 함수에서 값을 반환하지만 복수의 값을 반환할 수는 없다. 따라서 배열과 객체를 이용해 복수의 값을 반환하게 할 수 있다. 쉽게 말하면 위에 설명한 방법처럼 여러값들을 배열 혹은 객체로 묶어서 하나의 값으로 만든다음에 반환시키는 방법이다.
+
+그런데 위와 같이 코드를 짠 후 실행시켜보면 아래와 같은 배열의 형태로 결과가 출력된다.
+
+**(2) [256, 41]**
+
+해당 문제에서 원하는 것은 첫번째 줄에 홀수들의 합을 출력하고 두번째 줄에 홀수중에 가장 작은 값을 출력하는 것이므로 배열 형태가 아닌 두 줄의 형태로 출력해줘야 한다.
+따라서 **구조 분해 할당**을 이용해 결과값을 두 줄로 출력할 수 있다.
+
+```javascript
+<script>
+  function solution(arr) {
+    let sum = 0;
+    let min = Number.MAX_SAFE_INTEGER;
+    for (let x of arr) {
+      if (x % 2 === 1) {
+        sum += x;
+        if (x < min) min = x;
+      }
+    }
+    return [sum, min]; // 1
+  }
+  arr = [12, 77, 38, 41, 53, 92, 85];
+  let [resultSum, resultMin] = solution(arr); // 2
+  console.log(resultSum); // 3
+  console.log(resultMin); // 4
+  </script>
+```
+
+1. 배열 형식으로 return 한다.
+2. resultNum에는 solution() 함수를 실행하고 반환한 배열의 첫번째 값인 sum을 resultMin에는 두번째 값인 mind을 할당한다.
+3. 2에서 수행한 resultNum 값 출력한다.
+4. 2에서 수행한 resultMin 값 출력한다.
+
+이렇게 코드를 작성한 후 결과값을 보면
+
+**256**<br/>
+**41**
+
+이처럼 결과값이 두 줄로 출력된다.
+
+※ 배운것: 새로운 for문 형식, 복수 값 return, 구조분해할당
