@@ -342,7 +342,7 @@ console.log(answer);
 
 > 배열의 각 요소에 대해 콜백을 실행해 **단 1개의 출력 결과를 만든다**.
 
-그렇다면 filter 함수는 어떤식으로 구현되어 있을까? (정석X)
+그렇다면 reduce 함수는 어떤식으로 구현되어 있을까? (정석X)
 
 ```javascript
 function reduce(predicate, value) {
