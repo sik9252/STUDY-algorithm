@@ -7,6 +7,8 @@ with JavaScript**
 
 [알고리즘 문제 해결 규칙] 먼저 내가 스스로 작성한 코드를 html 파일의 윗부분에 작성하고 또 다른 답안 예시를 아래에 작성한다.
 
+`백준문제풀이`에는 자바스크립트로 백준 사이트의 알고리즘을 풀이한 과정을 기록한다.
+
 ---
 
 <a href="https://www.inflearn.com/course/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4">공부할때 수강한 인강</a>
